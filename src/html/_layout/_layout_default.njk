@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+{% include "_partial/_analytics.njk" %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>{% if title %}{{ title }} | {% endif %}{{ dataProject.project_name }}</title>
+{% include "_partial/_meta.njk" %}
+
+<link rel="stylesheet" href="/css/common.css">
+
+</head>
+<body>
+
+<div class="l-wrapper" id="top">
+
+{% include "_partial/_header.njk" %}
+
+<main class="l-main">
+{% block content_main %}{% endblock %}
+</main>
+
+{% include "_partial/_footer.njk" %}
+
+</div>
+
+{% include "_partial/_scripts.njk" %}
+
+</body>
+</html>

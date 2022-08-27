@@ -1,0 +1,18 @@
+{
+  "project_name": "株式会社シーブレイン コーポレートサイト",
+  "project_url": "https://c-brains.jp/",
+  "ga_tracking_id": "UA-198616-2",
+  "meta": {
+    "description": "Web制作・マニュアル制作・技術翻訳のことなら横浜のシーブレインへお任せください。シーブレインはさまざまなコミュニケーション技術を駆使して、お客様にとっての情報を有効な経営資源に変える支援をいたします",
+    "keywords": "横浜,Web制作,ホームページ制作,マニュアル制作,ドキュメント制作,翻訳会社,ローカライズ,バシャログ",
+    "og_site_name": "株式会社シーブレイン",
+    "og_title": "株式会社シーブレイン 横浜のWeb制作・マニュアル制作・翻訳会社",
+    "og_description": "Web制作・マニュアル制作・技術翻訳のことなら横浜のシーブレインへお任せください。シーブレインはさまざまなコミュニケーション技術を駆使して、お客様にとっての情報を有効な経営資源に変える支援をいたします",
+    "og_url": "https://c-brains.jp/",
+    "og_image": "https://c-brains.jp/img/social.png"
+  },
+  "jquery": {
+    "version": "2.2.4",
+    "cdn": "//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+  }
+}

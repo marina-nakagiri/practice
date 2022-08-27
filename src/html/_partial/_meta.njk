@@ -1,0 +1,14 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{% if description %}{{ description }}{% else %}{{ dataProject.meta.description }}{% endif %}">
+<meta name="keywords" content="{% if keywords %}{{ keywords }}{% else %}{{ dataProject.meta.keywords }}{% endif %}">
+<!-- [ OGP ] -->
+<meta name="twitter:card" content="summary">
+<meta property="og:type" content="{% if category === 'home' %}website{% else %}article{% endif %}">
+<meta property="og:site_name" content="{{ dataProject.meta.og_site_name }}">
+<meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ dataProject.meta.og_title }}{% endif %}">
+<meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ dataProject.meta.description }}{% endif %}">
+<meta property="og:url" content="{{ dataProject.meta.og_url }}">
+<meta property="og:image" content="{{ dataProject.meta.og_image }}">
+<!-- /[ OGP ] -->
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ dataProject.wp_path }}favicon.ico">

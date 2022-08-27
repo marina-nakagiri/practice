@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+@import "_base/variables";
+@import "_base/mixins";
+
+/* -----------------------------------------------------
+ * Init
+ * -------------------------------------------------- */
+*,
+*:before,
+*:after {
+	box-sizing: border-box
+}
+
+/* normalize overwrite */
+html {
+	position: relative;
+	min-height: 100%;
+	font-size: $font-size-base;
+	font-family: $font-family-base;
+}
+
+body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: $color-base;
+	color: $color-text;
+	font-size: 1.6rem;
+	line-height: $line-height-base;
+	// フォントレンダリング設定 for Mac: 1x解像度ではsubpixel、2x以上の解像度ではgrayscale
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: unset;
+}
+// フォントレンダリング設定 for Mac: 1x解像度ではsubpixel、2x以上の解像度ではgrayscale
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+	body {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+a {
+	color: $color-link;
+	&:hover {
+		text-decoration: none;
+	}
+	&:active,
+	&:focus,
+	&:visited {
+		color: $color-link;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+figure,
+figcaption,
+small {
+	margin: 0;
+	font-size: 100%;
+	font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: $line-height-heading;
+}
+
+img {
+	vertical-align: bottom;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+ol {
+	padding: 0;
+}
+
+th {
+	font-weight: normal;
+	text-align: left;
+}
+

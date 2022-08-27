@@ -1,0 +1,60 @@
+# --------------------------------------
+# gulp設定ファイル
+# プロジェクト開始時にを編集してください
+# --------------------------------------
+
+lint:
+  htmlLintFile: 'htmlhintrc.json' # htmlLint設定ファイル
+
+# ----------------------------------------
+# パス設定
+# ----------------------------------------
+srcRoot:  'src/'
+destRoot: 'htdocs/'
+
+path:
+  src:
+    html:       'src/html/'
+    sass:       'src/sass/'
+    js:         'src/js/'
+    libs:
+      css:      'src/libs/css/'
+      js:       'src/libs/js/'
+  dest:
+    html:       'htdocs/'
+    css:        'htdocs/css/'
+    img:        'htdocs/img/'
+    js:         'htdocs/js/'
+
+# ----------------------------------------
+# タスク設定
+# ----------------------------------------
+
+# Styleの設定
+style:
+  indent: "\t" # インデントの設定: "\t" or "    "
+  # ターゲットブラウザの指定
+  # (デフォルト：最新バージョン一つ前、IE11以上、iOS10以上、android5以上)
+  browsers:
+    - 'last 1 version'
+    - 'ie >= 11'
+    - 'ios_saf >= 10'
+    - 'Android >= 5.0'
+
+lineFeed: # 改行コードの設定: CR+LF, LF, CR
+  html: 'LF'
+  css: 'LF'
+  js: 'LF'
+
+encoding:
+  html: 'utf8'
+  css: 'utf8'
+  js: 'utf8'
+
+# サーバー設定 BrowserSyncオプション
+server:
+  baseDir: 'htdocs/' # ルートを指定します
+  startPath: '_filelist.html' # gulp起動時に開くページを指定
+  # port: 3000 # ポートを指定する場合はコメントを外してください（デフォルトは3000）
+  open: 'external' # External IPでブラウザを開けます（スマホで確認する時に重宝）
+

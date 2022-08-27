@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+@import "_base/variables";
+@import "_base/mixins";
+
+/* -----------------------------------------------------
+ * Utilities
+ * -------------------------------------------------- */
+.mod-left {
+	text-align: left !important;
+}
+
+.mod-center {
+	text-align: center !important;
+}
+
+.mod-right {
+	text-align: right !important;
+}
+
+.is-pc-hide {
+	@include media-pc {
+		display: none !important;
+	}
+}
+
+.is-pc-show {
+	@include media-pc {
+		display: block !important;
+	}
+}
+
+.is-sp-show {
+	@include media-sp {
+		display: block !important;
+	}
+}
+
+.is-sp-hide {
+	@include media-sp {
+		display: none !important;
+	}
+}
+
+.is-br-sp-show {
+	display: none;
+	@include media-sp {
+		display: inline-block !important;
+	}
+}
+
+.is-br-pc-show {
+	display: none;
+	@include media-pc {
+		display: inline-block !important;
+	}
+}
+
+.check-media {
+	display: block;
+	@include media-pc {
+		display: none;
+	}
+}

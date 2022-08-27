@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+//===================================================
+// _mixins.sass
+//===================================================
+
+// ----
+// * clearfix
+// * ex) @include clearfix();
+// ----
+@mixin clearfix {
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+
+// ----
+// * inline-blockでの隙間を削除
+// * ex) @include remove-letterspace();
+// ----
+@mixin remove-letterspace {
+	letter-spacing: -0.4em;
+	> * {
+		letter-spacing: normal;
+	}
+}
+
+// ----
+// * ブロック内のテキストを押し出して非表示
+// * ex) @include text-hidden;;
+// ----
+@mixin text-hidden {
+	overflow: hidden;
+	text-indent: 200%;
+	white-space: nowrap;
+}
+
+// ----
+// * opacity hover effect
+// * ex) @include hover();
+// ----
+@mixin hover($opacity: 0.7) {
+	transition: opacity 0.2s ease-in-out;
+	&:hover {
+		opacity: $opacity;
+	}
+}
+
+// ----
+// * メディアクエリ 分岐mixin
+// * ex)
+//   @include media-sp {}
+//   @include media-pc {}
+// ----
+@mixin media-sp {
+	@media screen and (max-width: $break-point) {
+		@content;
+	}
+}
+
+@mixin media-pc {
+	@media print, screen and (min-width: $break-point + 1) {
+		@content;
+	}
+}
+
+@mixin media-print {
+	@media print {
+		@content;
+	}
+}
+
+// ----
+// * 1行文字制限
+// * ex) @include ellipsis();
+// ----
+@mixin ellipsis {
+	overflow: hidden;
+	white-space: nowrap !important;
+	text-overflow: ellipsis !important;
+}
+
+// ----
+// * retinaディスプレイ用 1/2
+// * ex) width: retina(20)
+// ----
+@function retina($num) {
+	@return $num / 2;
+}
+
+// ----
+// * vw計算式
+// * ex)
+//   width: calcvw(200)
+$sp-design-width: 750; // SPデザインの幅を設定
+
+@function calcvw($num, $width: $sp-design-width) {
+	@return (1vw * $num / $width * 100);
+
+}
+
+// ----
+// * none-appearance
+// * ex)
+//   @include hover();
+@mixin none-appearance {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none transparent;
+	background-clip: padding-box;
+	color: inherit;
+	font-size: inherit;
+	vertical-align: middle;
+	box-sizing: border-box;
+	&::-ms-clear {
+		display: none;
+	}
+	&::-ms-reveal {
+		display: none;
+	}
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+// ----
+// * 数値丸め（小数点対応）
+// * ex) line-height: ceil-decimal((19 / 16), 1); -> 1.2
+// ----
+// Round (四捨五入)
+@function round-decimal ($number, $digits: 0) {
+    @return to-fixed($number, $digits, 'round');
+}
+
+// Ceil (切り上げ)
+@function ceil-decimal ($number, $digits: 0) {
+    @return to-fixed($number, $digits, 'ceil');
+}
+
+// Floor (切り捨て)
+@function floor-decimal ($number, $digits: 0) {
+    @return to-fixed($number, $digits, 'floor');
+}
+
+@function to-fixed ($number, $digits: 0, $round: 'round') {
+    $n: 1;
+    // $number must be a number
+    @if type-of($number) != number {
+        @warn '#{ $number } is not a number.';
+        @return $number;
+    }
+    // $digits must be a unitless number
+    @if type-of($digits) != number {
+        @warn '#{ $digits } is not a number.';
+        @return $number;
+    } @else if not unitless($digits) {
+        @warn '#{ $digits } has a unit.';
+        @return $number;
+    }
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+    @if $round == 'round' {
+        @return round($number * $n) / $n;
+    } @else if $round == 'ceil' {
+        @return ceil($number * $n) / $n;
+    } @else if $round == 'floor' {
+        @return floor($number * $n) / $n;
+    } @else {
+        @warn '#{ $round } is undefined keyword.';
+        @return $number;
+    }
+}
+
+// ----
+// * placeholder color
+// * ex) @include placeholderColor(#00ff00);
+// ----
+@mixin placeholder-color($color) {
+    &:placeholder-shown {
+        color: $color;
+    }
+    &::-webkit-input-placeholder {
+        color:$color;
+    }
+    &:-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color:$color;
+    }
+}
+
+// ----
+// * text-stroke (text-shadowを使って)
+// * ex) @include text-stroke(2, #fff);
+// ----
+@mixin text-stroke($size: 2, $bg: #000) {
+    text-shadow: #{$size}px 0 0 #{$bg}, -#{$size}px 0 0 #{$bg}, 0 -#{$size}px 0 #{$bg}, 0 #{$size}px 0 #{$bg}, #{$size}px #{$size}px 0 #{$bg}, -#{$size}px #{$size}px 0 #{$bg}, #{$size}px -#{$size}px 0 #{$bg}, -#{$size}px -#{$size}px 0 #{$bg}, #{$size - 1}px #{$size}px 0 #{$bg}, -#{$size - 1}px #{$size}px 0 #{$bg}, #{$size - 1}px -#{$size}px 0 #{$bg}, -#{$size - 1}px -#{$size}px 0 #{$bg}, #{$size}px #{$size - 1}px 0 #{$bg}, -#{$size}px #{$size - 1}px 0 #{$bg}, #{$size}px -#{$size - 1}px 0 #{$bg}, -#{$size}px -#{$size - 1}px 0 #{$bg}, #{$size - 1}px #{$size - 1}px 0 #{$bg}, -#{$size - 1}px #{$size - 1}px 0 #{$bg}, #{$size - 1}px -#{$size - 1}px 0 #{$bg}, -#{$size - 1}px -#{$size - 1}px 0 #{$bg};
+}
+
+// ----
+// * triangle
+// * ex) @include triangle(#000, 6px, 6px, top); 色, width, height, 頂点の方向(top/right/bottom/left)
+// ----
+@mixin triangle($color: #000, $width: 10px, $height: 10px, $dir: top) {
+	width: 0;
+	height: 0;
+	@if $dir == 'top' {
+		border-width: 0 #{$width/2} #{$height} #{$width/2};
+		border-color: transparent transparent $color transparent;
+	} @else if $dir == 'bottom' {
+		border-width: #{$height} #{$width/2} 0 #{$width/2};
+		border-color: $color transparent transparent transparent;
+	} @else if $dir == 'right' {
+		border-width: #{$height/2} 0 #{$height/2} #{$width};
+		border-color: transparent transparent transparent $color;
+	} @else {
+		border-width: #{$height/2} #{$width} #{$height/2} 0;
+		border-color: transparent $color transparent transparent;
+	}
+	border-style: solid;
+}

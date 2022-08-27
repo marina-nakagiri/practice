@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-no-invalid-hex ": true,
+    "indentation": "tab",
+    "keyframe-declaration-no-important": true,
+    "length-zero-no-unit": true,
+    "max-empty-lines": 3,
+    "max-nesting-depth": 4
+  }
+}

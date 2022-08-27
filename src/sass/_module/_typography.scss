@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+@import "_base/variables";
+@import "_base/mixins";
+
+/* -----------------------------------------------------
+ * Typography
+ * -------------------------------------------------- */
+
+/* ----- Heading ----- */
+@mixin h-common {
+	display: block;
+	margin: 30px 0;
+	font-weight: bold;
+	line-height: 1.22;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+@mixin h-1 {
+	font-size: 2.4rem;
+}
+@mixin h-2 {
+	padding: 0 0 0 20px;
+	border-left: 4px solid #000;
+	font-size: 2.0rem;
+}
+@mixin h-3 {
+	border-bottom: 1px solid #000;
+	font-size: 1.8rem;
+}
+@mixin h-4 {
+	font-size: 1.6rem;
+}
+@mixin h-5 {
+	font-size: 1.4rem;
+}
+@mixin h-6 {
+	font-size: 1.4rem;
+}
+
+.mod-heading1,
+.mod-heading2,
+.mod-heading3,
+.mod-heading4,
+.mod-heading5,
+.mod-heading6 {
+	@include h-common;
+}
+
+.mod-heading1 {
+	@include h-1;
+}
+
+.mod-heading2 {
+	@include h-2;
+}
+
+.mod-heading3 {
+	@include h-3;
+}
+
+.mod-heading4 {
+	@include h-4;
+}
+
+.mod-heading5 {
+	@include h-5;
+}
+
+.mod-heading6 {
+	@include h-6;
+}
+
+
+/* ----- Paragraph ----- */
+@mixin p-common {
+	margin: 10px 0;
+	line-height: 1.6;
+		&:first-child {
+		margin-top: 0;
+	}
+}
+
+.mod-p {
+	@include p-common;
+}
+
+
+/* ----- List ----- */
+@mixin ul-common {
+	margin: 20px 0;
+	display: table;
+
+	> li {
+		position: relative;
+		margin: 10px 0 0;
+		padding: 0 0 0 1em;
+		line-height: 1.5;
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 3px;
+			content: "•";
+			padding-right: 0.4em;
+			color: $color-text;
+			font-weight: bold;
+		}
+	}
+}
+@mixin ol-common {
+	margin: 20px 0;
+	padding: 0 0 0 1em;
+	list-style-type: decimal;
+
+	> li {
+		margin: 10px 0 0;
+		list-style-type: decimal;
+		line-height: 1.5;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+@mixin dl-common {
+	margin: 20px 0;
+	dt {
+		margin: 10px 0 0;
+		font-weight: bold;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+	dd {
+		margin: 10px 0 0 10px;
+	}
+}
+.mod-ul {
+	@include ul-common;
+}
+
+.mod-ol {
+	@include ol-common;
+}
+
+.mod-dl {
+	@include dl-common;
+}

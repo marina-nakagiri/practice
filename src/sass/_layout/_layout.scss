@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@import "_base/variables";
+@import "_base/mixins";
+
+/* -----------------------------------------------------
+ * Base
+ * -------------------------------------------------- */
+.l-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.l-main {
+    margin-top: 60px;
+    @include media-pc {
+        margin-top: 100px;
+    }
+
+    &-inner {
+    }
+}
+

@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+@import "_base/variables";
+@import "_base/mixins";
+
+// #####################################################
+// common.css
+// - Core
+// - Layout
+// - Modules
+// - Pages
+// ################################################## */
+
+/* =====================================================
+* Base
+* ================================================== */
+@import "_base/normalize";
+@import "_base/font";
+@import "_base/init";
+
+/* =====================================================
+ * Module
+ * ================================================== */
+@import "_module/_base";
+@import "_module/_utilities";
+@import "_module/_typography";
+@import "_module/_tools";
+@import "_module/_buttons";
+
+/* =====================================================
+ * Layout
+ * ================================================== */
+@import "_layout/_header";
+@import "_layout/_footer";
+@import "_layout/_layout";
+@import "_layout/_nav";
+
+/* =====================================================
+ * Page
+ * ================================================== */
+@import "_page/home";
